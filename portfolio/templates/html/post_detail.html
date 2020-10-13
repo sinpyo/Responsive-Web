@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Comma</title>
+    <link rel="stylesheet" type="text/css" href='{% static "css/post_detail.css" %}'>
+    <link rel=" shortcut icon" href='{% static "img/favicon.ico" %}'>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="head">
+        <div id="player"></div>
+        <div class="headline"><span class="control" onclick="player.previousVideo()">< </span><span id="head" onclick="controller(event)">Portfolio</span><span class="control" onclick="player.nextVideo()"> ></span></div>
+    </div>
+    <div class="nav">
+        <div class="nav-item">
+            <ul class="list">
+                <li><a href="/">home</a></li>
+                <li><a href='{% url "post" %}'>portfolio</a></li>
+                <li><a href='{% url "contact" %}'>contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="box-wrap">
+        <div class="box">
+
+            <div class="sm">
+                <a href="#">
+                    {% if not post.post_img %}
+                    <img src='{% static "img/comma2.png" %}' width="350px" height="350px" alt="" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                    {% else %}
+                    <img src="{{ post.post_img.url }}" width="350px" height="350px" alt="" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="content">
+                {{ post.post_content|safe }}
+                GUNDA<br><br>나의 몸에 말을 ☆건★Dㅏ☆<br><span id="content"><a href="https://github.com/sowish23/wink_gunda">『github』</a></span>
+                <br>식품안전나라 공공데이터(Open-Api)<br>활용 아이디어 공모전<br><span id="content-notice">최 우 수 상</span> 수상
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="footer">
+        <div class="fa">
+            <ul class="list">
+                <li><a href="https://www.facebook.com/kangcomma"><img src='{% static "img/fa-facebook.png" %}' width="50px" height="50px"></a></li>
+                <li><a href="https://www.instagram.com/kang__comma"><img src='{% static "img/fa-instagram.png" %}' width="50px" height="50px"></a></li>
+                <li><a href="https://github.com/sinpyo"><img src='{% static "img/fa-github.png" %}' width="50px" height="50px"></a></li>
+            </ul>
+        </div>
+        &copy; Comma
+    </div>
+</div>
+<script type="text/javascript" src='{% static "javascript/script.js" %}'></script>
+<script>
+
+    function zoomIn(event) {
+        event.target.style.transform = "scale(1.06)";
+        event.target.style.zIndex = 1;
+        event.target.style.transition = "all 0.3s";
+    }
+    function zoomOut(event) {
+        event.target.style.transform = "scale(1)";
+        event.target.style.zIndex = 0;
+        event.target.style.transition = "all 0.3s";
+    }
+    function lineZoomIn(event) {
+        event.target.style.transform = "scale(1.5)";
+        event.target.style.zIndex = 1;
+        event.target.style.transition = "all 0.3s";
+    }
+    function lineZoomOut(event) {
+        event.target.style.transform = "scale(1)";
+        event.target.style.zIndex = 0;
+        event.target.style.transition = "all 0.3s";
+    }
+</script>
+
+</body>
+</html>

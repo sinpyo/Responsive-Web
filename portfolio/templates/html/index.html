@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Comma</title>
+    <link rel="stylesheet" type="text/css" href='{% static "css/index.css" %}'>
+    <link rel=" shortcut icon" href='{% static "img/favicon.ico" %}'>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital@1&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="head">
+        <div id="player"></div>
+        <div class="headline"><span class="control" onclick="player.previousVideo()">< </span><span id="head" onclick="controller(event)">Comma</span><span class="control" onclick="player.nextVideo()"> ></span></div>
+    </div>
+    <div class="nav">
+        <div class="nav-item">
+            <ul class="list">
+                <li><a href="/">home</a></li>
+                <li><a href='{% url "post" %}'>portfolio</a></li>
+                <li><a href='{% url "contact" %}'>contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="box">
+
+        <div class="sm">
+            <a href='{% url "about" %}'><img src='{% static "img/comma3.png" %}' width="405px" height="405px" alt="" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"></a>
+        </div>
+    </div>
+
+    <!------ footer ------->
+    <hr>
+    <div class="footer">
+        <div class="fa">
+            <ul class="list">
+                <li><a href="https://www.facebook.com/kangcomma"><img src='{% static "img/fa-facebook.png" %}' width="50px" height="50px"></a></li>
+                <li><a href="https://www.instagram.com/kang__comma"><img src='{% static "img/fa-instagram.png" %}' width="50px" height="50px"></a></li>
+                <li><a href="https://github.com/sinpyo"><img src='{% static "img/fa-github.png" %}' width="50px" height="50px"></a></li>
+            </ul>
+        </div>
+        &copy; Comma
+    </div>
+</div>
+<script type="text/javascript" src='{% static "javascript/script.js" %}'></script>
+<script>
+    function zoomIn(event) {
+        event.target.style.transform = "scale(1.142)";
+        event.target.style.zIndex = 1;
+        event.target.style.transition = "all 0.3s";
+    }
+    function zoomOut(event) {
+        event.target.style.transform = "scale(1)";
+        event.target.style.zIndex = 0;
+        event.target.style.transition = "all 0.3s";
+    }
+    function lineZoomIn(event) {
+        event.target.style.transform = "scale(1.5)";
+        event.target.style.zIndex = 1;
+        event.target.style.transition = "all 0.3s";
+    }
+    function lineZoomOut(event) {
+        event.target.style.transform = "scale(1)";
+        event.target.style.zIndex = 0;
+        event.target.style.transition = "all 0.3s";
+    }
+</script>
+
+</body>
+</html>
